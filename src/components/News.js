@@ -37,6 +37,10 @@ export default class News extends Component {
     });
   }
 
+  capitalizeFirstLetter = (string) => {
+    return string.charAt(0)?.toUpperCase() + string.slice(1);
+  }
+
   handlePagination(value) {
     this.setState(
       {
@@ -66,7 +70,9 @@ export default class News extends Component {
           <Spinner />
         ) : (
           <>
-            <h1 className="text-center" style={{margin: '35px 0px'}}>Bharat Bulletin</h1>
+            <h1 className="text-center" style={{margin: '35px 0px'}}>
+                Bharat Bulletin - Top Headlines on {this.capitalizeFirstLetter(this.props.category)} 
+            </h1>
             <div className="row">
               {this.state.articles &&
                 this.state.articles?.map((item) => {
